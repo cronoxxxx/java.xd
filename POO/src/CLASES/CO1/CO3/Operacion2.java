@@ -1,4 +1,4 @@
-package CO3;
+package CLASES.CO1.CO3;
 
 import java.util.Scanner;
 

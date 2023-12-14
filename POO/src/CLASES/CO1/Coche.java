@@ -1,4 +1,4 @@
-package CO1;
+package CLASES.CO1;
 
 public class Coche {
     String color;

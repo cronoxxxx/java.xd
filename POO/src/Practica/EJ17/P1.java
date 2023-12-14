@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class P1 {
     public static void main(String[] args) {
-        P1 o1= new P1();
         Random random= new Random();
         int [][] matriz = new int[10][10];
         boolean [][]asignados= new boolean[10][10];
@@ -30,9 +29,9 @@ public class P1 {
             }
             System.out.println();
         }
-        o1.eliminarNumeros(matriz);
+        eliminarNumeros(matriz);
     }
-    public int[][]arrayInicial(int[][]array){
+    private static int[][]arrayInicial(int[][]array){
         for(int i=0; i<array.length;i++){
             for(int j=0; j< array[i].length;j++){
                 if (array[i][j]!=0){
@@ -43,29 +42,32 @@ public class P1 {
         }
         return array;
     }
-    public int[][]eliminarNumeros(int[][]array){
+    private static int[][]eliminarNumeros(int[][]array){
         Scanner entrada= new Scanner(System.in);
         for(int i=0; i<array.length;i++){
             System.out.println("¿Cuantos numeros desea borrar en la linea "+(i+1)+"?");
             int numeros= entrada.nextInt();
-            for(int j=0; j<numeros;j++){
+            for (int j = 0; j < numeros; j++) {
                 int numeroEliminar;
-                boolean validNumber;
+                boolean validNumber = false;
+
                 do {
-                    System.out.println("Ingrese el número que desea eliminar: ");
+                    System.out.println("Ingrese el número que desea eliminar (1-10): ");
                     numeroEliminar = entrada.nextInt();
-                    validNumber = false;
-                    for (int k = 0; k < array[i].length; k++) {
-                        if (array[i][k] == numeroEliminar) {
-                            validNumber = true;
-                            break;
-                        }
+                    if (numeroEliminar >= 1 && numeroEliminar <= 10){
+                        validNumber=true;
                     }
                     if (!validNumber) {
-                        System.out.println("El número no existe en la línea. Ingrese otro número.");
+                        System.out.println("El número ingresado no está en el rango válido (1-10).");
                     }
                 } while (!validNumber);
-                array[i][j]=0;
+
+                for (int k = 0; k < array[i].length; k++) {
+                    if (array[i][k] == numeroEliminar) {
+                        array[i][k] = 0;
+                        break;
+                    }
+                }
                 arrayInicial(array);
             }
         }
