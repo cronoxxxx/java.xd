@@ -23,11 +23,6 @@ public class Ej2 {
         contarPalabras(nombre,apellidos);
         contarApariciones(nombre,apellidos);
     }
-
-
-
-
-
     private static String iniciales(String nombre, String apellidos){
         String nuevaCadena1="";
         String[]palabras1=nombre.split("\\s");
